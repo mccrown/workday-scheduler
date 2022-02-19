@@ -68,3 +68,51 @@ var tasks = {
     })
 
  };
+
+ // replace textarea with a p element and persists in localStorage
+ var replaceTextarea = function(textareaElement) {
+    var taskInfo = textareaElement.closest(".task-info");
+    var textArea = taskInfo.find("textarea");
+
+    // get time and task
+    var time = taskInfo.attr("id");
+    var text = textArea.val().trim();
+
+   // persist the data
+   tasks[time] = [text];
+   saveTasks();
+
+   //replace textArea element with a p element
+   createTask(text, taskInfo);
+}
+
+// click handlers
+
+// tasks
+$(".task").click(function() {
+
+   // save the other tasks if they've already been clicked
+   $("textarea").each(function() {
+       replaceTextarea($(this));
+   })
+
+   //convert to a textarea element if the time hasn't passed
+   var time = $(this).closest(".task-info").attr("id");
+   if (parseInt(time) >= moment().hour()) {
+
+       //create a textInput element that includes the current task
+       var text = $(this).text();
+       var textInput = $("<textarea>")
+       .addClass("form-control")
+       .val(text);
+
+       // add the textInput element to the parent div
+       $(this).html(textInput);
+       textInput.trigger("focus");
+   }
+})
+
+// save button click handler
+$(".saveBtn").click(function() {
+    replaceTextarea($(this));
+})
