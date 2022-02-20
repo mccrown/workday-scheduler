@@ -1,6 +1,6 @@
 # workday-scheduler
 * github: https://github.com/mccrown/workday-scheduler
-* deployed URL: 
+* deployed URL: https://mccrown.github.io/workday-scheduler/
 
 ## Description
 
