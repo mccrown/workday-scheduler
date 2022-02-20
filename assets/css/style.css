@@ -2,7 +2,8 @@ body {
     font-family: 'Open Sans', sans-serif;
     font-size: 16px;
     line-height: 1;
-    color: #06AED5;
+    color: black;
+    background-color: bisque;
   }
 
   h1 {
